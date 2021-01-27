@@ -1,5 +1,7 @@
+# Resource 1 (pixela homepage) : https://pixe.la/
 from confidential_data import pixela_token, username
 import requests
+from datetime import datetime
 
 pixela_endpoint = "https://pixe.la/v1/users"
 pixela_endpoint_parameter = {
@@ -29,8 +31,9 @@ headers = {
 #---------- POSTING A PIXEL ---------------------------
 post_pixel_endpoint = f"{pixela_endpoint}/{username}/graphs/{graph_endpoint_parameter['id']}"
 post_pixel_endpoint_parameter = {
-    "date":"20210127",
-    "quantity":"45"
+    "date":datetime(2021,1,1).strftime("%Y%m%d"),   #yyyymmdd
+    # "date":datetime.now().strftime('%Y%m%d'),
+    "quantity":"40"
 }
 response = requests.post(url = post_pixel_endpoint, json = post_pixel_endpoint_parameter, headers = headers)
 print(response.text)
